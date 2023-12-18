@@ -11,8 +11,12 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*":["src/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ejs"],
+  "include": ["src/**/*.ts","src/*.d.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ejs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

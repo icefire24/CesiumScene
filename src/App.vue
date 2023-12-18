@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import CesiumContainer from "./components/CesiumContainer.vue";
 </script>
 
 <template>
-  <CesiumContainer />
+  <router-view></router-view>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
