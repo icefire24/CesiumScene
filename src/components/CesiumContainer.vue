@@ -5,12 +5,12 @@
 import * as Cesium from 'cesium'
 import { ref, onMounted } from 'vue'
 import useMapStore from '@/store/modules/map'
-import PolylineTrailMaterialProperty  from '@/utils/PolylineTrailMaterialProperty'
+import { PolylineTrailLinkMaterialProperty } from '@/utils/PolylineTrailMaterialProperty'
 let earthContainer = ref(null)
 let mapStore = useMapStore()
-onMounted(() => {
-  let viewer
-  viewer = new Cesium.Viewer(earthContainer.value!, {
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMDFlYzljOC04YTQwLTQwZjUtOTY4My0yZDI5MjNiMzFjMDYiLCJpZCI6ODUxMDAsImlhdCI6MTY4NjA1ODI3M30.ZhBOypwDMw_O5U1ohT6Ch9NcK7p90E_XFAcfGihTwlM'
+onMounted(async () => {
+  let viewer = new Cesium.Viewer(earthContainer.value!, {
     homeButton: false, //是否显示主页按钮
     sceneModePicker: false, //是否显示场景按钮
     baseLayerPicker: false, //是否显示图层选择控件
@@ -24,6 +24,14 @@ onMounted(() => {
     shouldAnimate: false
   })
   ;(viewer.cesiumWidget.creditContainer as any).style.display = 'none' // 去除版权信息
+
+  try {
+    const tileset = await Cesium.Cesium3DTileset.fromUrl('/model/FSTDQ/tileset.json')
+    viewer.scene.primitives.add(tileset)
+    viewer.flyTo(tileset)
+  } catch (error) {
+    console.error(`Error creating tileset: ${error}`)
+  }
   mapStore.setMap(viewer)
   //加载kml数据
   let kmlOptions = {
@@ -34,13 +42,14 @@ onMounted(() => {
   let line = mapStore.map!.dataSources.add(Cesium.KmlDataSource.load('model/广汕铁路.kml', kmlOptions))
   console.log(line)
   // line.then((res) => {
-  //   res.entities.values[0].polyline.material =new PolylineTrailMaterialProperty({
-  //   color: Cesium.Color.RED,
-  //   duration: 3000
+  //   res.entities.values[0].polyline.material = new PolylineTrailLinkMaterialProperty({
+  //     color: Cesium.Color.RED,
+  //     duration: 3000
+  //   })
   // })
-  // })
-  //给线加上流动纹理
-  
+
+  // //给线加上流动纹理
+
   mapStore.map!.zoomTo(line)
 })
 </script>

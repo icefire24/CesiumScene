@@ -5,9 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/cesium':
+    specifier: ^1.70.0
+    version: 1.70.0
   cesium:
-    specifier: ^1.103.0
-    version: 1.112.0
+    specifier: 1.107.2
+    version: 1.107.2
   moment:
     specifier: ^2.29.4
     version: 2.29.4
@@ -16,7 +19,7 @@ dependencies:
     version: 2.1.7(typescript@4.9.5)(vue@3.3.10)
   vite-plugin-cesium:
     specifier: ^1.2.22
-    version: 1.2.22(cesium@1.112.0)(rollup@2.79.1)(vite@3.2.7)
+    version: 1.2.22(cesium@1.107.2)(rollup@2.79.1)(vite@3.2.7)
   vue:
     specifier: ^3.2.41
     version: 3.3.10(typescript@4.9.5)
@@ -76,8 +79,8 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  /@cesium/engine@6.1.1:
-    resolution: {integrity: sha512-PY8A742SR5rHagjaDCG7G6LWYeMXdyBJOoTkkaaLGh4XYBCdan/aygPO0CTTq26hAyjf9Ugi7HCoRe0ruNvgGg==}
+  /@cesium/engine@3.0.2:
+    resolution: {integrity: sha512-p7xawdNn6dHOSMD/LtedSrsLqxcTyISi3JpKoKQd8DV4Yev0uwCbo8p7V7NqGXQjPqW7Tq0yAvBYvOMBpg9d1g==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@tweenjs/tween.js': 21.0.0
@@ -85,7 +88,6 @@ packages:
       autolinker: 4.0.0
       bitmap-sdf: 1.0.4
       dompurify: 3.0.6
-      draco3d: 1.5.6
       earcut: 2.2.4
       grapheme-splitter: 1.0.4
       jsep: 1.3.8
@@ -93,7 +95,7 @@ packages:
       ktx-parse: 0.6.0
       lerc: 2.0.0
       mersenne-twister: 1.1.0
-      meshoptimizer: 0.20.0
+      meshoptimizer: 0.19.0
       pako: 2.1.0
       protobufjs: 7.2.5
       rbush: 3.0.1
@@ -101,11 +103,11 @@ packages:
       urijs: 1.19.11
     dev: false
 
-  /@cesium/widgets@4.3.1:
-    resolution: {integrity: sha512-uT2cCd6D2JOxtDsvh0VzbrlKOvAJROacDPq2OXE7muHWx/FkXXL0Q6+ZWGbMuCdv/KsiMJpRUiU9jJDX9AS01A==}
+  /@cesium/widgets@3.0.2:
+    resolution: {integrity: sha512-ai3BbbxQYcj639jG2rPI+4zz6Tmz+xFG+ynUYjIrYa672iqe2VXQy1ahX4wvmwEvf0YLROJuT53jU7Nq0KZHmA==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@cesium/engine': 6.1.1
+      '@cesium/engine': 3.0.2
       nosleep.js: 0.12.0
     dev: false
 
@@ -219,11 +221,18 @@ packages:
     resolution: {integrity: sha512-qVfOiFh0U8ZSkLgA6tf7kj2MciqRbSCWaJZRwftVO7UbtVDNsZAXpWXqvCDtIefvjC83UJB+vHTDOGm5ibXjEA==}
     dev: false
 
+  /@types/cesium@1.70.0:
+    resolution: {integrity: sha512-awCNt8Exv6oT+GALMgorfLYw43H5/99ZdKpG4Ovtft7dKpaAPkLuqpD1AobSjjtJ7xaOKKTj5fzYj+JQnPuzAQ==}
+    deprecated: This is a stub types definition. cesium provides its own type definitions, so you do not need this installed.
+    dependencies:
+      cesium: 1.107.2
+    dev: false
+
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
-  /@types/node@20.10.3:
-    resolution: {integrity: sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==}
+  /@types/node@20.10.5:
+    resolution: {integrity: sha512-nNPsNE65wjMxEKI93yOP+NPGGBJz/PoN3kZsVLee0XMiJolxSekEVD8wRwBUBqkwc7UWop0edW50yrCQW4CyRw==}
     dependencies:
       undici-types: 5.26.5
     dev: false
@@ -407,12 +416,12 @@ packages:
     dependencies:
       fill-range: 7.0.1
 
-  /cesium@1.112.0:
-    resolution: {integrity: sha512-johaLB97GIBZF9qEfKHc04vQHgh3B0tikFE+QA5W+ZsL97KQjTcdlgwGNxCT2yMCgN5hZ+eSynoQhkqLdFuUDA==}
+  /cesium@1.107.2:
+    resolution: {integrity: sha512-qQDVyY3ZORbfn/8LM4v7vPOZZBMyVBwxJsC0SAbGEOH6hVR+wEDHjBCzphSJFppmomy01+lS+PsA5wcNpWtOFw==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@cesium/engine': 6.1.1
-      '@cesium/widgets': 4.3.1
+      '@cesium/engine': 3.0.2
+      '@cesium/widgets': 3.0.2
     dev: false
 
   /chokidar@3.5.3:
@@ -479,10 +488,6 @@ packages:
 
   /dompurify@3.0.6:
     resolution: {integrity: sha512-ilkD8YEnnGh1zJ240uJsW7AzE+2qpbOUYjacomn3AvJ6J4JhKGSZ2nh4wUIXPZrEPppaCLx5jFe8T89Rk8tQ7w==}
-    dev: false
-
-  /draco3d@1.5.6:
-    resolution: {integrity: sha512-+3NaRjWktb5r61ZFoDejlykPEFKT5N/LkbXsaddlw6xNSXBanUYpFc2AXXpbJDilPHazcSreU/DpQIaxfX0NfQ==}
     dev: false
 
   /earcut@2.2.4:
@@ -900,8 +905,8 @@ packages:
     resolution: {integrity: sha512-mUYWsMKNrm4lfygPkL3OfGzOPTR2DBlTkBNHM//F6hGp8cLThY897crAlk3/Jo17LEOOjQUrNAx6DvgO77QJkA==}
     dev: false
 
-  /meshoptimizer@0.20.0:
-    resolution: {integrity: sha512-olcJ1q+YVnjroRJpCL1Dj5aZxr2JMr2hRutMUwhuHZvpAL7SIZgOT6eMlFF4TbBGSR89tawE/gqB79J/LrW/Nw==}
+  /meshoptimizer@0.19.0:
+    resolution: {integrity: sha512-58qz5Qc/6Geu8Ib3bBWERE5R7pM5ErrJVo16fAtu6ryxVaE3VAtM/u2vurDxaq8AGZ3yWxuM/DnylTga5a4XCQ==}
     dev: false
 
   /micromatch@4.0.5:
@@ -1050,7 +1055,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.10.3
+      '@types/node': 20.10.5
       long: 5.2.3
     dev: false
 
@@ -1327,13 +1332,13 @@ packages:
     resolution: {integrity: sha512-HXgFDgDommxn5/bIv0cnQZsPhHDA90NPHD6+c/v21U5+Sx5hoP8+dP9IZXBU1gIfvdRfhG8cel9QNPeionfcCQ==}
     dev: false
 
-  /vite-plugin-cesium@1.2.22(cesium@1.112.0)(rollup@2.79.1)(vite@3.2.7):
+  /vite-plugin-cesium@1.2.22(cesium@1.107.2)(rollup@2.79.1)(vite@3.2.7):
     resolution: {integrity: sha512-OnS+VKNGck4kUu4/67Fdfhz0/zF9mDVNUp9hUWtX19C38O0mJsJy2MH1ev2QcrVLf6VieJ7vCGxkLchdB1n1HQ==}
     peerDependencies:
       cesium: ^1.95.0
       vite: '>=2.7.1'
     dependencies:
-      cesium: 1.112.0
+      cesium: 1.107.2
       fs-extra: 9.1.0
       rollup-plugin-external-globals: 0.6.1(rollup@2.79.1)
       serve-static: 1.15.0

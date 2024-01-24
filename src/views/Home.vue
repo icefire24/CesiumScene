@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <cesium-container></cesium-container> -->
-    hello world
+    <cesium-container></cesium-container>
   </div>
 </template>
 <script setup lang="ts"></script>
