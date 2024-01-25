@@ -18,6 +18,6 @@
       "@/*":["src/*"]
     }
   },
-  "include": ["src/**/*.ts","src/*.d.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ejs"],
+  "include": ["src/**/*.ts","src/*.d.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ejs", "src/utils/PolylineFlowMaterialProperty.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

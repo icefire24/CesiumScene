@@ -5,7 +5,7 @@
 import * as Cesium from 'cesium'
 import { ref, onMounted } from 'vue'
 import useMapStore from '@/store/modules/map'
-import { PolylineTrailLinkMaterialProperty } from '@/utils/PolylineTrailMaterialProperty'
+import {PolylineFlowMaterialProperty} from '@/utils/PolylineFlowMaterialProperty.js'
 let earthContainer = ref(null)
 let mapStore = useMapStore()
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMDFlYzljOC04YTQwLTQwZjUtOTY4My0yZDI5MjNiMzFjMDYiLCJpZCI6ODUxMDAsImlhdCI6MTY4NjA1ODI3M30.ZhBOypwDMw_O5U1ohT6Ch9NcK7p90E_XFAcfGihTwlM'
@@ -33,6 +33,7 @@ onMounted(async () => {
     console.error(`Error creating tileset: ${error}`)
   }
   mapStore.setMap(viewer)
+  
   //加载kml数据
   let kmlOptions = {
     camera: viewer.scene.camera,
@@ -40,13 +41,10 @@ onMounted(async () => {
     clampToGround: true
   }
   let line = mapStore.map!.dataSources.add(Cesium.KmlDataSource.load('model/广汕铁路.kml', kmlOptions))
-  console.log(line)
-  // line.then((res) => {
-  //   res.entities.values[0].polyline.material = new PolylineTrailLinkMaterialProperty({
-  //     color: Cesium.Color.RED,
-  //     duration: 3000
-  //   })
-  // })
+  line.then((res) => {
+    res.entities.values[0].polyline!.material = new PolylineFlowMaterialProperty({
+    })
+  })
 
   // //给线加上流动纹理
 
