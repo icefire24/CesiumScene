@@ -6,3 +6,4 @@ declare module '*.vue' {
   export default component
 }
 declare module '@/utils/PolylineFlowMaterialProperty.js'
+declare module '@/utils/PolylineArrowMaterialProperty.js'

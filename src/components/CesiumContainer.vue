@@ -6,9 +6,12 @@ import * as Cesium from 'cesium'
 import { ref, onMounted } from 'vue'
 import useMapStore from '@/store/modules/map'
 import {PolylineFlowMaterialProperty} from '@/utils/PolylineFlowMaterialProperty.js'
+import {PolylineArrowMaterialProperty} from '@/utils/PolylineArrowMaterialProperty.js'
+import { transformControl } from '@/utils/cesiumUtil'
 let earthContainer = ref(null)
 let mapStore = useMapStore()
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMDFlYzljOC04YTQwLTQwZjUtOTY4My0yZDI5MjNiMzFjMDYiLCJpZCI6ODUxMDAsImlhdCI6MTY4NjA1ODI3M30.ZhBOypwDMw_O5U1ohT6Ch9NcK7p90E_XFAcfGihTwlM'
+const testdata=ref([1,2,'3'])
 onMounted(async () => {
   let viewer = new Cesium.Viewer(earthContainer.value!, {
     homeButton: false, //是否显示主页按钮
@@ -26,9 +29,10 @@ onMounted(async () => {
   ;(viewer.cesiumWidget.creditContainer as any).style.display = 'none' // 去除版权信息
 
   try {
-    const tileset = await Cesium.Cesium3DTileset.fromUrl('/model/FSTDQ/tileset.json')
+    const tileset = await Cesium.Cesium3DTileset.fromUrl('/model/jianzhu/tileset.json')
     viewer.scene.primitives.add(tileset)
     viewer.flyTo(tileset)
+    new transformControl(tileset,viewer,tileset.boundingSphere.center,tileset.boundingSphere.radius)
   } catch (error) {
     console.error(`Error creating tileset: ${error}`)
   }
@@ -45,10 +49,28 @@ onMounted(async () => {
     res.entities.values[0].polyline!.material = new PolylineFlowMaterialProperty({
     })
   })
-
+  //加载gltf数据
+  // const man = viewer.scene.primitives.add(Cesium.Model.fromGltfAsync({
+  //   url:'/model/man.glb'
+  // }))
+  // viewer.flyTo(man)
   // //给线加上流动纹理
 
-  mapStore.map!.zoomTo(line)
+  // mapStore.map!.zoomTo(line)
+  //鼠标移动到kml变宽
+  // let handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas)
+  // handler.setInputAction(function (movement:Cesium.ScreenSpaceEventHandler.MotionEvent) {
+  //   let ray = viewer.camera.getPickRay(movement.endPosition)
+  //   let pick=viewer.scene.pick(movement.endPosition)
+  //   console.log(pick);
+    
+  //   if (pick) {
+  //     pick.id.polyline!.width = 10
+  //     pick.id.polyline!.material = new PolylineArrowMaterialProperty() 
+  //   } else {
+
+  //   }
+  // }, Cesium.ScreenSpaceEventType.MOUSE_MOVE)
 })
 </script>
 <style scoped>
